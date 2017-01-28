@@ -1,0 +1,30 @@
+﻿@using Sessao.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        @{ 
+            Carrinho carrinho = Session["Carrinho"] as Carrinho;
+
+            if(carrinho != null)
+            {
+                @Html.ActionLink("Meu carrinho(" + carrinho.Produtos.Count + " produtos)","Index","Carrinho")
+            }
+        }
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts",required: false)
+</body>
+</html>
